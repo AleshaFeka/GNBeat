@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="self.edu.gnbeat.vm.MethronomeViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_metronome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="self.edu.gnbeat.MainActivity">
+
+        <TextView
+            android:id="@+id/tvBPMInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@{String.valueOf(model.currentTrack.bpm)}"
+            tools:text="Track BPM" />
+
+        <TextView
+            android:id="@+id/tvTrackNameInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvBPMInMetronome"
+            android:layout_centerHorizontal="true"
+            android:text="@{model.currentTrack.name}"
+            tools:text="Track Name" />
+
+        <Button
+            android:id="@+id/buttonStartStopInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBPMInMetronome"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> model.toggleClick()}"
+            android:text="@string/startStop" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonNextTrackInMetronome"
+            android:layout_alignEnd="@+id/buttonStartStopInMetronome"
+            android:layout_alignLeft="@+id/buttonStartStopInMetronome"
+            android:layout_alignRight="@+id/buttonStartStopInMetronome"
+            android:layout_alignStart="@+id/buttonStartStopInMetronome"
+            android:layout_below="@+id/buttonDown5BPMInMetronome"
+            android:text="@string/tap" />
+
+        <TextView
+            android:id="@+id/tvTappedBpmInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button"
+            android:layout_centerHorizontal="true"
+            android:text="@string/empty" />
+
+        <Button
+            android:id="@+id/buttonNextTrackInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/next" />
+
+        <Button
+            android:id="@+id/buttonPrevTrackInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/prev" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTrackListNameInMetronome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/values_font_big"
+            android:text="@string/nextTrack" />
+
+        <TextView
+            android:id="@+id/tvNextTrackNameInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView13"
+            android:layout_centerHorizontal="true"
+            android:text="@string/dump"
+            tools:text="Next Track Name" />
+
+        <TextView
+            android:id="@+id/tvTrackListNameInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView10"
+            android:layout_alignBottom="@+id/textView10"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/dump"
+            tools:text="TrackList Name" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/buttonTracksInMetronome"
+            android:layout_toLeftOf="@+id/tvTrackListNameInMetronome"
+            android:layout_toStartOf="@+id/tvTrackListNameInMetronome"
+            android:text="@string/trackList" />
+
+        <Button
+            android:id="@+id/buttonDown5BPMInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/buttonStartStopInMetronome"
+            android:onClick="@{() -> model.down5Bpm()}"
+            android:text="@string/down5" />
+
+        <Button
+            android:id="@+id/buttonUp5BPMInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/buttonStartStopInMetronome"
+            android:onClick="@{() -> model.up5Bpm()}"
+            android:text="@string/up5" />
+
+        <Button
+            android:id="@+id/buttonUp1BPMInMetronome"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonUp5BPMInMetronome"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:onClick="@{() -> model.up1Bpm()}"
+            android:text="@string/up1" />
+
+        <Button
+            android:id="@+id/buttonDown1BPMInMetronome"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonDown5BPMInMetronome"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="@{() -> model.down1Bpm()}"
+            android:text="@string/down1" />
+
+        <ImageView
+            android:id="@+id/ivStartStopInMetronome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvTrackNameInMetronome"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@android:drawable/presence_invisible" />
+
+    </RelativeLayout>
+</layout>
