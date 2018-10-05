@@ -13,6 +13,10 @@ class TrackManager {
         loadTrackLists()
     }
 
+    fun addTrack(track : Track) {
+        tracks.add(track)
+    }
+
     private fun loadTracks() {
         for (i : Int in 0..14) {
             tracks.add(Track(name = "Track_$i", bpm = 100 + (i * 3)))
@@ -25,9 +29,4 @@ class TrackManager {
             trackLists.add(TrackList(name = "TrackList_$i", tracks = tracks.subList(i * 3, (i + 1) * 3)))
         }
     }
-
-    fun getDefaultTrack() : Track {
-        return Track()
-    }
-
 }
